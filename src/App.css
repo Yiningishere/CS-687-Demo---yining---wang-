@@ -1,0 +1,29 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  place-items: unset;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: unset;
+    background-color: unset;
+  }
+  button {
+    background-color: unset;
+  }
+}
