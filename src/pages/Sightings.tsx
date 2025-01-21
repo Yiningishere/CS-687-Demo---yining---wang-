@@ -1,10 +1,21 @@
 import { MapPin, Calendar, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Sightings() {
+  const { toast } = useToast();
+
+  const handleOfferHelp = (_id: number) => {
+    toast({
+      title: "Help Offered",
+      description: "Thank you for offering to help! We'll contact you with more details.",
+    });
+  };
+
   const sightings = [
     {
       id: 1,
@@ -100,9 +111,26 @@ export default function Sightings() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{sighting.description}</p>
-                    <div className="flex gap-4">
-                      <Button variant="outline">View Details</Button>
-                      <Button>Offer Help</Button>
+                    {/* Desktop buttons */}
+                    <div className="hidden md:flex gap-4">
+                      <Button variant="outline" asChild>
+                        <Link to={`/sightings/${sighting.id}`}>View Details</Link>
+                      </Button>
+                      <Button onClick={() => handleOfferHelp(sighting.id)}>
+                        Offer Help
+                      </Button>
+                    </div>
+                    {/* Mobile buttons - stack vertically */}
+                    <div className="flex flex-col gap-3 md:hidden">
+                      <Button variant="outline" className="w-full" asChild>
+                        <Link to={`/sightings/${sighting.id}`}>View Details</Link>
+                      </Button>
+                      <Button 
+                        className="w-full"
+                        onClick={() => handleOfferHelp(sighting.id)}
+                      >
+                        Offer Help
+                      </Button>
                     </div>
                   </CardContent>
                 </div>
