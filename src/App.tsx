@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Home from '@/pages/Home';
 import Dogs from '@/pages/Dogs';
+import DogDetails from '@/pages/DogDetails';
 import Report from '@/pages/Report';
 import Sightings from '@/pages/Sightings';
 import Volunteer from '@/pages/Volunteer';
@@ -17,6 +18,7 @@ import Privacy from '@/pages/Privacy';
 import Terms from '@/pages/Terms';
 import Contact from '@/pages/Contact';
 import AdoptDog from '@/pages/AdoptDog';
+import SightingDetails from './pages/SightingDetails';
 
 const App = () => {  return (
     <Router>
@@ -28,6 +30,8 @@ const App = () => {  return (
             <Route path="/dogs" element={<Dogs />} />
             <Route path="/report" element={<Report />} />
             <Route path="/sightings" element={<Sightings />} />
+            <Route path="/sightings/:id" element={<SightingDetails />} />
+            <Route path="/dogs/:id" element={<DogDetails />} />
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/about" element={<About />} />
