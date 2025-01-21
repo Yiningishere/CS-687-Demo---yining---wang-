@@ -1,9 +1,9 @@
 import { MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Link } from 'react-router-dom';
 
 export default function Dogs() {
   const dogs = [
@@ -20,7 +20,7 @@ export default function Dogs() {
     {
       id: 2,
       name: 'Luna',
-      image: 'https://images.unsplash.com/photo-1537151608826-05700442b31b?q=80&w=2394&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=2394&auto=format&fit=crop',
       location: 'Downtown Seattle',
       description: 'Sweet husky, very gentle and good with people.',
       status: 'Available for Adoption',
@@ -137,11 +137,9 @@ export default function Dogs() {
                   <span className="text-sm text-muted-foreground">{dog.gender}</span>
                 </div>
                 <p className="text-muted-foreground mb-4">{dog.description}</p>
-                <Link to={`/dogs/${dog.id}`} className="w-full md:w-auto md:px-4 lg:px-6 text-sm md:text-base block">
-                  <Button className="w-full">
-                    Learn More
-                  </Button>
-                </Link>
+                <Button className="w-full" asChild>
+                  <Link to={`/dogs/${dog.id}`}>Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
           ))}
